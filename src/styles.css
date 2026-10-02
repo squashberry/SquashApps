@@ -47,3 +47,16 @@ footer{padding:22px 20px 95px;margin:0;border-top:1px solid #d2d2d7;font-size:11
 .sheet-bg{padding:8px}.sheet{border-radius:25px;padding:13px 22px calc(22px + env(safe-area-inset-bottom))}
 }
 @media(min-width:761px){.mobile{display:none!important}}
+
+/* final mobile navigation polish */
+@media(max-width:760px){
+.mobile{height:82px;background:rgba(249,249,251,.94);backdrop-filter:blur(28px) saturate(180%);border-top:1px solid rgba(60,60,67,.18);box-shadow:0 -6px 24px rgba(0,0,0,.035)}
+.mobile button{gap:3px;color:#6e6e73}
+.mobile button span{font-size:21px;line-height:24px;height:25px}
+.mobile button small{font-size:10px;font-weight:500}
+.mobile .active{color:#007aff}
+.mobile .active small{font-weight:600}
+.icon-glyph{display:grid;place-items:center;width:100%;height:100%;font-size:.72em;font-weight:800}
+.product-icon.large .icon-glyph{font-size:.78em}
+.brand span{font-weight:800}
+}
