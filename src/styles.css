@@ -218,3 +218,92 @@ body{background:var(--ios-bg)}
  .store-section{padding:38px 20px}.store-section h2{font-size:25px}.store-preview{padding-left:0;padding-right:0}.store-preview header{padding:0 20px}.store-shots{gap:12px;padding:3px 20px 16px}.store-shots .mock{flex:0 0 78%}.store-shots .phone{width:100%;height:auto;aspect-ratio:218/390}.store-about,.store-whats{display:block}.store-description{font-size:15px;line-height:1.52}.store-whats>div{padding-top:2px}.store-whats{margin-top:0}.rating-layout{grid-template-columns:110px 1fr}.rating-score strong{font-size:42px}.rating-empty{padding:20px;font-size:13px}.store-info dl,.store-features>div{border-radius:15px}.store-info dl>div{padding:14px 15px}.store-features article{min-height:68px;padding:10px 15px}.store-links{margin:0 20px 45px}
 }
 @media(min-width:761px){.store-header{margin-left:8px;margin-right:8px}}
+
+/* iOS 26 comparison pass — content-first App Store composition */
+:root{--ios-blue:#007aff;--ios-bg:#f5f5f7;--ios-separator:rgba(60,60,67,.18)}
+html{scroll-behavior:smooth}
+body{background:var(--ios-bg)}
+main{isolation:isolate}
+.topbar{border-bottom:0;background:rgba(250,250,252,.68);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%)}
+.topbar-inner{max-width:1180px}
+.desktop-search{background:rgba(118,118,128,.12);color:#6e6e73}
+.page{max-width:1180px}
+.today-head,.collection-head,.search-head{position:relative}
+.today-head h1,.collection-head h1,.search-head h1{letter-spacing:-.055em}
+.feature,.collection-feature{box-shadow:0 8px 30px rgba(0,0,0,.07)}
+.feature{border:1px solid rgba(255,255,255,.14)}
+.app-rail>button .product-icon{box-shadow:0 4px 12px rgba(0,0,0,.12)}
+.row{transition:background .18s ease,transform .18s ease}
+.row:hover{background:rgba(255,255,255,.55)}
+.get{background:var(--ios-blue)}
+.search-field{background:rgba(118,118,128,.12);border:1px solid rgba(60,60,67,.08)}
+.mobile{background:rgba(250,250,252,.70);backdrop-filter:blur(30px) saturate(180%);-webkit-backdrop-filter:blur(30px) saturate(180%);border:1px solid rgba(255,255,255,.78);box-shadow:0 10px 34px rgba(0,0,0,.14)}
+.mobile .active{background:rgba(0,122,255,.11)}
+.mobile button svg{width:22px;height:22px}
+
+/* The iOS 26 App Store product header is a dedicated creative layer, not a fake device screenshot. */
+.store-header{height:470px;border-radius:28px;overflow:hidden;position:relative;color:#fff}
+.store-creative{height:100%;position:relative;overflow:hidden;isolation:isolate}
+.store-creative:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 72% 25%,rgba(255,255,255,.24),transparent 24%),radial-gradient(circle at 28% 90%,rgba(255,255,255,.13),transparent 30%);z-index:-1}
+.store-creative:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(0,0,0,.18));z-index:-1}
+.store-header-who{background:linear-gradient(135deg,#07101f,#124bbd 52%,#5d95ff)}
+.store-header-ai{background:linear-gradient(135deg,#100c19,#4a2b86 52%,#a08aff)}
+.store-header-med{background:linear-gradient(135deg,#053d35,#0d8a73 52%,#62d9b6)}
+.store-header-net{background:linear-gradient(135deg,#070707,#691721 52%,#ee4a5b)}
+.store-header-finder{background:linear-gradient(135deg,#090b19,#30398f 52%,#7b83ff)}
+.store-header-pay{background:linear-gradient(135deg,#06150d,#12623a 52%,#50d891)}
+.creative-copy{position:absolute;left:7%;top:16%;width:min(470px,44%);z-index:4}
+.creative-copy small{font-size:11px;font-weight:700;letter-spacing:.13em;opacity:.82}
+.creative-copy h2{font-size:64px;line-height:.98;letter-spacing:-.065em;margin:12px 0 16px;max-width:510px}
+.creative-copy p{font-size:15px;opacity:.82;margin:0}
+.creative-icon{position:absolute;right:10%;top:11%;z-index:4}
+.creative-icon .product-icon.large{width:108px;height:108px;border-radius:26px;box-shadow:0 20px 50px rgba(0,0,0,.24);border:1px solid rgba(255,255,255,.2)}
+.creative-ui{position:absolute;background:rgba(255,255,255,.82);color:#1d1d1f;border:1px solid rgba(255,255,255,.65);box-shadow:0 24px 70px rgba(0,0,0,.24);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:22px;z-index:3}
+.creative-ui-main{right:14%;bottom:-54px;width:390px;height:300px;padding:20px;transform:rotate(-5deg)}
+.creative-ui-top{display:flex;justify-content:space-between;color:#6e6e73;font-size:12px;font-weight:600}
+.creative-ui-top i{font-style:normal;letter-spacing:2px}
+.creative-ui-title{font-size:29px;font-weight:700;letter-spacing:-.04em;margin:38px 0 17px}
+.creative-ui-line{height:9px;border-radius:9px;background:#d9d9de;margin-bottom:9px}.creative-ui-line.w80{width:80%}.creative-ui-line.w55{width:55%}
+.creative-ui-card{margin-top:18px;padding:15px;border-radius:15px;background:#f2f2f7;display:flex;flex-direction:column;gap:5px}.creative-ui-card b{font-size:13px}.creative-ui-card span{font-size:10px;color:#6e6e73}
+.creative-ui-small{right:39%;bottom:20px;width:190px;padding:15px 17px;display:flex;flex-direction:column;gap:5px;transform:rotate(7deg);z-index:4}
+.creative-ui-small span{font-size:9px;color:#6e6e73;text-transform:uppercase;letter-spacing:.08em}.creative-ui-small b{font-size:13px}
+.creative-orbit{position:absolute;border:1px solid rgba(255,255,255,.16);border-radius:50%;z-index:1}.orbit-a{width:620px;height:620px;right:-80px;bottom:-350px}.orbit-b{width:420px;height:420px;left:-220px;bottom:-250px}
+
+.store-identity{background:var(--ios-bg);border-bottom:1px solid var(--ios-separator)}
+.store-title h1{font-weight:700}.store-share{background:rgba(118,118,128,.12)}
+.store-meta{background:var(--ios-bg)}
+.store-section{border-bottom:1px solid var(--ios-separator)}
+.store-section h2{font-weight:700}
+.store-shots{scroll-snap-type:x proximity}
+.store-shots .mock{scroll-snap-align:start}
+.store-about,.store-whats{background:transparent}
+.store-info dl,.store-features>div{box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.store-links a{font-weight:500}
+
+@media(max-width:760px){
+  body{background:var(--ios-bg)}
+  .page{padding-bottom:112px}
+  .today-head h1,.collection-head h1{font-size:44px}
+  .editorial{padding:0 12px}
+  .feature{border-radius:22px}
+  .store-header{height:365px;border-radius:0;margin:0}
+  .product .back{padding:2px 20px 12px}
+  .creative-copy{left:20px;top:30px;width:57%}
+  .creative-copy h2{font-size:40px;line-height:.99;margin:9px 0 11px}
+  .creative-copy p{font-size:11px}
+  .creative-icon{right:20px;top:25px}
+  .creative-icon .product-icon.large{width:68px;height:68px;border-radius:17px}
+  .creative-ui-main{right:-18px;bottom:-65px;width:76%;height:250px;padding:17px;transform:rotate(-5deg)}
+  .creative-ui-title{font-size:23px;margin:29px 0 14px}
+  .creative-ui-small{right:42%;bottom:20px;width:150px;padding:12px 13px;transform:rotate(7deg)}
+  .creative-ui-small b{font-size:11px}
+  .orbit-a{width:390px;height:390px;right:-190px;bottom:-240px}.orbit-b{width:280px;height:280px;left:-180px;bottom:-160px}
+  .store-identity{grid-template-columns:76px minmax(0,1fr);gap:13px;padding:18px 20px 16px}
+  .store-identity .product-icon.large{width:76px;height:76px;border-radius:19px}
+  .store-title h1{font-size:30px}.store-title p{font-size:13px}
+  .store-action{grid-column:2;margin-top:-5px}
+  .store-meta{padding:17px 20px}
+  .store-section{padding-top:36px;padding-bottom:36px}
+  .store-shots .mock{flex-basis:78%}
+}
+@media(min-width:761px){.store-header{margin:0 8px}}
