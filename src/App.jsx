@@ -46,7 +46,33 @@ function Collection({web,open,install}){let items=web?webs:apps;return <div clas
 
 function Search({query,setQuery,open,install}){let r=useMemo(()=>{let q=query.trim().toLowerCase();return q?products.filter(p=>(p.name+' '+p.subtitle+' '+p.category+' '+p.desc).toLowerCase().includes(q)):products},[query]);return <div className="page search"><div className="search-head"><h1>{query?'Results':'Search'}</h1><label className="search-field"><span>⌕</span><input autoFocus value={query} placeholder="Search apps and web" onChange={e=>setQuery(e.target.value)}/></label></div>{r.length?<div className="rows">{r.map(p=><Row key={p.slug} p={p} open={open} install={install}/>)}</div>:<div className="empty"><b>No Results</b><span>Try another search.</span></div>}</div>}
 
-function Product({p,back,install,share}){return <div className="page product"><button className="back" onClick={back}>‹ Apps</button><section className={`product-hero tone-${p.tone}`}><div className="product-hero-copy"><div className="product-identity"><Icon p={p} large/><div><small>{p.category}</small><h1>{p.name}</h1><p>{p.subtitle}</p><span>By Squashberry</span></div></div><div className="product-actions"><Get p={p} install={install}/><button className="share" onClick={()=>share(p)} aria-label={`Share ${p.name}`}>↗</button></div></div><div className="product-hero-art"><Mock p={p} label={p.screens[0]}/></div></section><div className="meta">{[['RATING','New','Be the first to review'],['AGE','4+','Years'],['CATEGORY',p.category,p.kind==='website'?'Web':'App'],['DEVELOPER','Squashberry','Squashberry']].map(x=><div key={x[0]}><small>{x[0]}</small><b>{x[1]}</b><span>{x[2]}</span></div>)}</div><section className="shots"><h2>Preview</h2><div className="shot-track">{p.screens.map((s,i)=><Mock key={s} p={p} label={s} i={i}/>)}</div></section><section className="copy-grid"><div><small>ABOUT THIS {p.kind==='website'?'WEBSITE':'APP'}</small><h2>{p.summary}</h2><p>{p.desc}</p></div><div className="whats"><small>WHAT'S NEW</small><h3>Version 1.0</h3><p>Built and maintained by Squashberry.</p></div></section><section className="ratings"><div><h2>Ratings & Reviews</h2><div className="empty-card">No ratings yet</div></div><div><h2>Information</h2><dl><dt>Developer</dt><dd>Squashberry</dd><dt>Category</dt><dd>{p.category}</dd><dt>Availability</dt><dd>{p.kind==='website'?'Web':'Installable'}</dd></dl></div></section><section className="inside"><small>FEATURES</small><h2>Inside {p.name}</h2><div>{p.features.map((f,i)=><article key={f}><span>0{i+1}</span><b>{f}</b><small>{p.screens[i]||p.category}</small></article>)}</div></section><section className="product-links"><a href={p.kind==='website'?'#':'#'}>Developer Website <span>›</span></a><a href="#">App Support <span>›</span></a><a href="#">Privacy Policy <span>›</span></a></section></div>}
+function Product({p,back,install,share}){return <div className="page product">
+ <button className="back" onClick={back}>‹ {p.kind==='website'?'Web':'Apps'}</button>
+ <section className={`store-header tone-${p.tone}`}>
+   <div className="store-header-art">
+     <div className="store-art-copy"><small>{p.category.toUpperCase()}</small><strong>{p.summary}</strong><span>Built by Squashberry</span></div>
+     <div className="store-art-device"><Mock p={p} label={p.screens[0]}/></div>
+   </div>
+ </section>
+ <section className="store-identity">
+   <Icon p={p} large/>
+   <div className="store-title"><h1>{p.name}</h1><p>{p.subtitle}</p><a href="#">Squashberry</a></div>
+   <div className="store-action"><Get p={p} install={install}/><button className="store-share" onClick={()=>share(p)} aria-label={`Share ${p.name}`}>↗</button></div>
+ </section>
+ <div className="store-meta">
+   <div><b>4+</b><span>Age</span></div>
+   <div><b>—</b><span>Rating</span></div>
+   <div><b>{p.category}</b><span>Category</span></div>
+   <div><b>{p.kind==='website'?'Web':'App'}</b><span>Platform</span></div>
+ </div>
+ <section className="store-section store-preview"><header><h2>Preview</h2></header><div className="store-shots">{p.screens.map((x,i)=><Mock key={x} p={p} label={x} i={i}/>)}</div></section>
+ <section className="store-section store-about"><header><h2>About This {p.kind==='website'?'Website':'App'}</h2></header><p className="store-description">{p.desc}</p><button className="more">More</button></section>
+ <section className="store-section store-whats"><header><h2>What's New</h2></header><div><b>Version 1.0</b><p>Built and maintained by Squashberry.</p></div></section>
+ <section className="store-section store-ratings"><header><h2>Ratings & Reviews</h2></header><div className="rating-layout"><div className="rating-score"><strong>—</strong><span>No Ratings Yet</span></div><div className="rating-empty">Be the first to review {p.name}.</div></div></section>
+ <section className="store-section store-info"><header><h2>Information</h2></header><dl><div><dt>Provider</dt><dd>Squashberry</dd></div><div><dt>Category</dt><dd>{p.category}</dd></div><div><dt>Size</dt><dd>Web app</dd></div><div><dt>Compatibility</dt><dd>iPhone, iPad & Web</dd></div><div><dt>Languages</dt><dd>English</dd></div><div><dt>Age Rating</dt><dd>4+</dd></div></dl></section>
+ <section className="store-section store-features"><header><h2>Features</h2></header><div>{p.features.map((f,i)=><article key={f}><span>0{i+1}</span><div><b>{f}</b><small>{p.screens[i]||p.category}</small></div><i>›</i></article>)}</div></section>
+ <section className="store-links"><a href="#">Developer Website <span>›</span></a><a href="#">App Support <span>›</span></a><a href="#">Privacy Policy <span>›</span></a></section>
+ </div>}
 
 function Sheet({p,close,deferred}){return <div className="sheet-bg" onClick={close}><div className="sheet" onClick={e=>e.stopPropagation()}><div className="grab"/><Icon p={p} large/><small>{p.kind==='website'?'WEBSITE':'APP'}</small><h2>{p.name}</h2><p>{p.kind==='website'?'Open the Squashberry web product.':'Install this Squashberry product when your browser supports PWA installation.'}</p><button onClick={async()=>{if(deferred){deferred.prompt();await deferred.userChoice}close()}}>{p.kind==='website'?'Done':'Install'}</button></div></div>}
 
