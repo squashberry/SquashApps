@@ -60,3 +60,48 @@ footer{padding:22px 20px 95px;margin:0;border-top:1px solid #d2d2d7;font-size:11
 .product-icon.large .icon-glyph{font-size:.78em}
 .brand span{font-weight:800}
 }
+
+/* SquashApps mobile reconstruction */
+@media(max-width:760px){
+  body{background:#fff}
+  .topbar{height:50px;background:rgba(250,250,252,.82);border-bottom:0}
+  .topbar-inner{height:50px;padding:0 16px}
+  .brand b:not(.brand-mark){display:none}
+  .brand{position:absolute;left:16px}
+  .brand span{width:30px;height:30px;border-radius:50%}
+  .tools{position:absolute;right:16px}
+  .today-head{padding:10px 20px 25px}
+  .today-head h1{font-size:46px;font-weight:700}
+  .today-head .large{display:none}
+  .features{gap:14px;padding:0 12px}
+  .feature{border-radius:22px;box-shadow:0 1px 5px rgba(0,0,0,.10)}
+  .feature-art{height:275px}
+  .feature-copy{padding:23px 22px 27px}
+  .feature-copy small{font-size:10px}
+  .feature-copy h2{font-size:32px;font-weight:700}
+  .section{padding-top:48px}
+  .section header{padding:0 20px 3px}
+  .section header small{font-size:10px}
+  .section header h2{font-size:26px;font-weight:700}
+  .row{min-height:91px;padding:14px 20px;grid-template-columns:60px minmax(0,1fr) auto;gap:12px}
+  .row .product-icon{width:60px;height:60px;border-radius:15px}
+  .row-copy b{font-size:16px;font-weight:600}
+  .row-copy span{font-size:13px}
+  .row-copy small{font-size:11px}
+  .row .get{display:block;background:#007aff;color:white;border-radius:18px;min-width:58px;padding:5px 13px;font-size:12px;font-weight:600}
+  .collection-head{padding:20px 20px 25px}
+  .collection-head h1{font-size:46px}
+  .chips{padding:0 20px 20px}
+  .collection-feature{margin:0 12px;border-radius:22px}
+  .product{padding-top:18px}
+  .product-top{border-bottom:0}
+  .product-top h1{font-size:34px}
+  .shots{padding-top:28px}
+  .shot-track{padding-left:20px;padding-right:20px}
+  .shot-track .mock{flex-basis:76%}
+  .mobile{height:78px;padding:7px 5px calc(7px + env(safe-area-inset-bottom));background:rgba(249,249,251,.92);backdrop-filter:blur(25px) saturate(180%);border-top:1px solid rgba(60,60,67,.18)}
+  .mobile button{gap:2px;color:#6e6e73}
+  .mobile button span{font-size:22px;line-height:25px}
+  .mobile small{font-size:10px}
+  .mobile .active{color:#007aff}
+}
