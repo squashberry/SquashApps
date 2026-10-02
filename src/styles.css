@@ -307,3 +307,19 @@ main{isolation:isolate}
   .store-shots .mock{flex-basis:78%}
 }
 @media(min-width:761px){.store-header{margin:0 8px}}
+
+/* iOS 26 motion pass */
+:root{--motion-ease:cubic-bezier(.22,1,.36,1);--motion-spring:cubic-bezier(.34,1.56,.64,1)}
+main.route{animation:ios-route-in .48s var(--motion-ease) both;transform-origin:50% 12%}
+@keyframes ios-route-in{from{opacity:0;transform:translateY(10px) scale(.992)}to{opacity:1;transform:none}}
+.page>*{animation:ios-content-in .58s var(--motion-ease) both}.page>*:nth-child(2){animation-delay:.025s}.page>*:nth-child(3){animation-delay:.05s}.page>*:nth-child(4){animation-delay:.075s}
+@keyframes ios-content-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+button,.row,.feature,.collection-feature,.app-rail>button,.get,.store-share,.mobile button,.topbar nav button{transition:transform .28s var(--motion-ease),opacity .2s ease,background-color .25s ease,box-shadow .3s ease}
+button:active{transform:scale(.96)}.get:active,.store-share:active{transform:scale(.92)}.row:active,.feature:active,.collection-feature:active{transform:scale(.985)}
+.row:hover{transform:translateY(-1px)}.app-rail>button:hover{transform:translateY(-4px)}.feature:hover,.collection-feature:hover{transform:translateY(-2px)}
+.store-header{animation:ios-hero-in .72s var(--motion-ease) both}.store-creative .creative-copy{animation:ios-copy-in .7s var(--motion-ease) .08s both}.store-creative .creative-icon{animation:ios-icon-in .7s var(--motion-spring) .14s both}.store-creative .creative-ui-main{animation:ios-card-in .85s var(--motion-ease) .1s both}.store-creative .creative-ui-small{animation:ios-card-in-small .75s var(--motion-ease) .2s both}
+@keyframes ios-hero-in{from{opacity:.55;transform:scale(1.025)}to{opacity:1;transform:scale(1)}}@keyframes ios-copy-in{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:none}}@keyframes ios-icon-in{from{opacity:0;transform:scale(.72) rotate(-8deg)}to{opacity:1;transform:scale(1) rotate(0)}}@keyframes ios-card-in{from{opacity:0;transform:translateY(38px) rotate(-5deg)}to{opacity:1;transform:translateY(0) rotate(-5deg)}}@keyframes ios-card-in-small{from{opacity:0;transform:translateY(28px) rotate(7deg)}to{opacity:1;transform:translateY(0) rotate(7deg)}}
+.store-shots .mock{transition:transform .45s var(--motion-ease)}.store-shots .mock:hover{transform:translateY(-6px)}.mobile button svg{transition:transform .35s var(--motion-spring)}.mobile .active svg{transform:scale(1.08)}.mobile .active small{font-weight:600}.topbar nav .active:after{animation:tab-line-in .32s var(--motion-ease) both}@keyframes tab-line-in{from{transform:scaleX(0);opacity:0}to{transform:scaleX(1);opacity:1}}
+.sheet-bg{animation:sheet-bg-in .32s ease both}.sheet{animation:sheet-up .52s var(--motion-spring) both}@keyframes sheet-bg-in{from{opacity:0}to{opacity:1}}@keyframes sheet-up{from{opacity:0;transform:translateY(42px) scale(.96)}to{opacity:1;transform:none}}
+.search-field:focus-within{box-shadow:0 0 0 4px rgba(0,122,255,.12);transform:scale(1.01)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}}
