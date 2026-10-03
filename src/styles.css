@@ -1252,3 +1252,166 @@ footer{color:var(--muted)}
     -webkit-backdrop-filter:blur(20px) saturate(180%)!important;
   }
 }
+
+
+/* =========================================================
+   Phase 5–10 — editorial, search, shared navigation + deep-link polish
+   ========================================================= */
+.editorial-meta{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin:9px 0 13px;
+  color:var(--muted);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.01em;
+}
+.editorial-meta span+span:before{
+  content:'·';
+  margin-right:8px;
+  color:rgba(110,110,115,.55);
+}
+.editorial-feature .feature-copy>b{
+  display:inline-flex;
+  align-items:center;
+  gap:3px;
+}
+.editorial-feature .feature-copy>b span{
+  font-size:18px;
+  line-height:1;
+  transition:transform .28s var(--easing);
+}
+.editorial-feature:hover .feature-copy>b span{transform:translateX(3px)}
+@media(min-width:761px){
+  .editorial{
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+  }
+  .editorial > .editorial-feature:first-child{
+    min-height:540px;
+  }
+  .editorial > .editorial-feature:nth-child(2){
+    min-height:430px;
+  }
+  .secondary-editorial{
+    margin-top:6px;
+  }
+}
+@media(max-width:760px){
+  .editorial{display:flex;flex-direction:column;gap:16px}
+  .editorial-meta{margin-top:7px;margin-bottom:10px;font-size:10px}
+}
+
+.search-scope{
+  display:flex;
+  gap:7px;
+  margin-top:13px;
+  overflow:auto;
+  scrollbar-width:none;
+}
+.search-scope::-webkit-scrollbar{display:none}
+.search-scope button{
+  flex:0 0 auto;
+  min-height:31px;
+  padding:0 13px;
+  border-radius:999px;
+  background:rgba(118,118,128,.10);
+  color:var(--muted);
+  font-size:12px;
+  font-weight:600;
+  transition:background-color .25s ease,color .25s ease,transform .25s var(--easing);
+}
+.search-scope button.selected{
+  background:var(--ink);
+  color:var(--surface);
+}
+.search-scope button:active{transform:scale(.95)}
+.search-count{
+  margin:9px 0 0;
+  color:var(--muted);
+  font-size:11px;
+}
+.search-clear{
+  width:24px!important;
+  height:24px!important;
+  padding:0!important;
+  border-radius:50%!important;
+  display:grid!important;
+  place-items:center!important;
+  background:rgba(118,118,128,.20)!important;
+  color:var(--muted)!important;
+  font-size:16px!important;
+  line-height:1!important;
+  flex:none;
+}
+.search-field{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+.search-field input{
+  min-width:0;
+}
+
+.empty button{
+  color:var(--blue);
+  background:none;
+  padding:8px 0 0;
+  font-size:13px;
+  font-weight:600;
+}
+
+.get{
+  min-height:36px;
+}
+.get:before{
+  content:'';
+}
+
+.store-identity .product-icon{
+  view-transition-name:shared-product;
+}
+.row[data-product] .product-icon{
+  view-transition-name:none;
+}
+body[data-transition-product="who"] .row[data-product="who"] .product-icon,
+body[data-transition-product="squashai"] .row[data-product="squashai"] .product-icon,
+body[data-transition-product="medisquash"] .row[data-product="medisquash"] .product-icon,
+body[data-transition-product="netfliks"] .row[data-product="netfliks"] .product-icon,
+body[data-transition-product="netfinder"] .row[data-product="netfinder"] .product-icon,
+body[data-transition-product="squashberrypay"] .row[data-product="squashberrypay"] .product-icon{
+  view-transition-name:shared-product;
+}
+::view-transition-old(shared-product){
+  animation:shared-old .32s var(--easing) both;
+}
+::view-transition-new(shared-product){
+  animation:shared-new .46s var(--spring) both;
+}
+@keyframes shared-old{
+  to{opacity:.15;transform:scale(.72)}
+}
+@keyframes shared-new{
+  from{opacity:0;transform:scale(.72)}
+  to{opacity:1;transform:none}
+}
+::view-transition-group(root){
+  animation-duration:.42s;
+}
+::view-transition-old(root){animation:route-old .32s ease both}
+::view-transition-new(root){animation:route-new .42s var(--easing) both}
+@keyframes route-old{to{opacity:.82;transform:translateX(-10px)}}
+@keyframes route-new{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
+
+@media(max-width:760px){
+  .search-scope{margin-top:11px}
+  .search-scope button{min-height:30px;font-size:11px;padding:0 12px}
+  .search-count{margin-top:8px;font-size:10px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  ::view-transition-old(*),::view-transition-new(*),::view-transition-group(*){animation:none!important}
+  .editorial-feature .feature-copy>b span{transition:none}
+}
